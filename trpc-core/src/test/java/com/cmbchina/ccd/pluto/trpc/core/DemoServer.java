@@ -1,9 +1,9 @@
 package com.cmbchina.ccd.pluto.trpc.core;
 
-import com.cmbchina.ccd.pluto.trpc.common.definition.EnvDefinition;
-import com.cmbchina.ccd.pluto.trpc.common.definition.RpcDefinition;
-import com.cmbchina.ccd.pluto.trpc.common.definition.ServerDefinition;
-import com.cmbchind.ccd.pluto.trpc.core.TRpcBooter;
+import com.sigmoid.arch.trpc.common.definition.EnvDefinition;
+import com.sigmoid.arch.trpc.common.definition.RpcDefinition;
+import com.sigmoid.arch.trpc.common.definition.ServerDefinition;
+import com.sigmoid.arch.trpc.core.TRpcBooter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cmbchina.ccd.pluto</groupId>
+    <groupId>com.sigmoid.arch</groupId>
     <artifactId>trpc</artifactId>
     <packaging>pom</packaging>
     <version>${trpc.version}</version>
@@ -110,31 +110,31 @@
         <dependencies>
 
             <dependency>
-                <groupId>com.cmbchina.ccd.pluto</groupId>
+                <groupId>com.sigmoid.arch</groupId>
                 <artifactId>trpc-common</artifactId>
                 <version>${trpc.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.cmbchina.ccd.pluto</groupId>
+                <groupId>com.sigmoid.arch</groupId>
                 <artifactId>trpc-registry</artifactId>
                 <version>${trpc.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.cmbchina.ccd.pluto</groupId>
+                <groupId>com.sigmoid.arch</groupId>
                 <artifactId>trpc-rpc</artifactId>
                 <version>${trpc.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.cmbchina.ccd.pluto</groupId>
+                <groupId>com.sigmoid.arch</groupId>
                 <artifactId>trpc-core</artifactId>
                 <version>${trpc.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.cmbchina.ccd.pluto</groupId>
+                <groupId>com.sigmoid.arch</groupId>
                 <artifactId>trpc-demo</artifactId>
                 <version>${trpc.version}</version>
             </dependency>
@@ -142,19 +142,6 @@
         </dependencies>
 
     </dependencyManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>Pluto</id>
-            <name>Pluto</name>
-            <url>http://buildrepo.cs/artifactory/l-maven-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>Pluto</id>
-            <name>Pluto</name>
-            <url>http://buildrepo.cs/artifactory/l-maven-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <build>
 
