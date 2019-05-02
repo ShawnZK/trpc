@@ -1,7 +1,7 @@
 package com.sigmoid.arch.trpc.common.constants;
 
 /**
- * Created by z674095 on 2019/4/1.
+ * Created by ShawnZk on 2019/4/1.
  */
 public class ClientExceptionConstants {
 

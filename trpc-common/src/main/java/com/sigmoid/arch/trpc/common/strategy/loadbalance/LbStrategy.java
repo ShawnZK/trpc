@@ -3,7 +3,7 @@ package com.sigmoid.arch.trpc.common.strategy.loadbalance;
 import java.util.List;
 
 /**
- * Created by z674095 on 2019/3/29.
+ * Created by ShawnZk on 2019/3/29.
  */
 public interface LbStrategy {
 

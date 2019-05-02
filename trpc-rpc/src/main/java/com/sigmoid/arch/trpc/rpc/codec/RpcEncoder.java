@@ -7,7 +7,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.AllArgsConstructor;
 
 /**
- * Created by z674095 on 2019/3/27.
+ * Created by ShawnZk on 2019/3/27.
  */
 @AllArgsConstructor
 public class RpcEncoder extends MessageToByteEncoder {

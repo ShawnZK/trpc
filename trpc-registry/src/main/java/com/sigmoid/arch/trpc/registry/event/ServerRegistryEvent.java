@@ -4,7 +4,7 @@ import com.sigmoid.arch.trpc.registry.RegistryTypes;
 import com.google.common.net.HostAndPort;
 
 /**
- * Created by Z674095 on 2019/3/26.
+ * Created by ShawnZk on 2019/3/26.
  */
 public class ServerRegistryEvent extends RegistryEvent {
 

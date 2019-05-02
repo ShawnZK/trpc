@@ -11,7 +11,7 @@ import java.util.List;
 import static com.sigmoid.arch.trpc.common.constants.CodecConstants.LENGTH_FRAME_BYTES;
 
 /**
- * Created by z674095 on 2019/3/27.
+ * Created by ShawnZk on 2019/3/27.
  */
 @AllArgsConstructor
 public class RpcDecoder extends ByteToMessageDecoder {

@@ -3,7 +3,7 @@ package com.sigmoid.arch.trpc.registry.event;
 import com.sigmoid.arch.trpc.registry.RegistryTypes;
 
 /**
- * Created by Z674095 on 2019/3/26.
+ * Created by ShawnZk on 2019/3/26.
  */
 public class ClientRegistryEvent extends RegistryEvent {
 

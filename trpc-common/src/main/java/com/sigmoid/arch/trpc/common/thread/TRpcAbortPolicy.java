@@ -4,7 +4,7 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * Created by Z674095 on 2019/3/26.
+ * Created by ShawnZk on 2019/3/26.
  */
 public class TRpcAbortPolicy extends ThreadPoolExecutor.AbortPolicy {
 

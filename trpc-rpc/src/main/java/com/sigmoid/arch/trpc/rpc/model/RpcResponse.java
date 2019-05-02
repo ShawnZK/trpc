@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 /**
- * Created by Z674095 on 2019/3/26.
+ * Created by ShawnZk on 2019/3/26.
  */
 @Builder
 public class RpcResponse implements Serializable {

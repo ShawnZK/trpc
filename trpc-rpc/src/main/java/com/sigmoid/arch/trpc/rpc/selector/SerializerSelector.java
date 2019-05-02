@@ -7,7 +7,7 @@ import com.sigmoid.arch.trpc.rpc.serializer.ProtostuffSerializer;
 import com.sigmoid.arch.trpc.rpc.serializer.RpcSerializer;
 
 /**
- * Created by z674095 on 2019/3/27.
+ * Created by ShawnZk on 2019/3/27.
  */
 public class SerializerSelector {
 

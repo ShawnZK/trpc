@@ -9,7 +9,7 @@ import static com.sigmoid.arch.trpc.rpc.utils.RpcUtil.genServerBeanMappingKey;
 import static com.sigmoid.arch.trpc.rpc.utils.RpcUtil.genServerMethodMappingKey;
 
 /**
- * Created by z674095 on 2019/4/2.
+ * Created by ShawnZk on 2019/4/2.
  */
 public class ServerBeanMapping {
 

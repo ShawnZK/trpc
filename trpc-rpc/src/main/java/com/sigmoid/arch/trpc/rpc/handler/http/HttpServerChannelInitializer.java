@@ -6,7 +6,7 @@ import io.netty.channel.socket.SocketChannel;
 import lombok.AllArgsConstructor;
 
 /**
- * Created by Z674095 on 2019/3/27.
+ * Created by ShawnZk on 2019/3/27.
  */
 @AllArgsConstructor
 public class HttpServerChannelInitializer extends ChannelInitializer<SocketChannel> {

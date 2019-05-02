@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * Created by z674095 on 2019/3/27.
+ * Created by ShawnZk on 2019/3/27.
  */
 public class JsonSerializer implements RpcSerializer {
 
