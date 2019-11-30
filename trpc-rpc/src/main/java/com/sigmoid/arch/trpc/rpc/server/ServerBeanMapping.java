@@ -3,6 +3,7 @@ package com.sigmoid.arch.trpc.rpc.server;
 import com.google.common.collect.Maps;
 
 import java.lang.reflect.Method;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 
 import static com.sigmoid.arch.trpc.rpc.utils.RpcUtil.genServerBeanMappingKey;
@@ -31,11 +32,15 @@ public class ServerBeanMapping {
     }
 
     public static Method getMethod(String clazzName, String methodName, String[] argTypeNames) {
-        return serverMethods.get(genServerMethodMappingKey(clazzName, methodName, argTypeNames));
+        return Optional.ofNullable(serverMethods.get(genServerMethodMappingKey(clazzName, methodName, argTypeNames)))
+                .orElseThrow(() -> new IllegalArgumentException(String.format(
+                        "Fail to find method of interface [%s] method [%s] parameter types [%s]", clazzName, methodName, argTypeNames.toString())));
     }
 
     public static Object getBean(String clazzName) {
-        return serverBeans.get(genServerBeanMappingKey(clazzName));
+        return Optional.ofNullable(serverBeans.get(genServerBeanMappingKey(clazzName)))
+                .orElseThrow(() -> new IllegalArgumentException(String.format(
+                        "Fail to get bean of class [%s]", clazzName)));
     }
 
 }

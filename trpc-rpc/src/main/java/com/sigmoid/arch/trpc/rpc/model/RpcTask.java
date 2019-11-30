@@ -51,11 +51,7 @@ public class RpcTask implements Callable<RpcResponse> {
         String requestId = rpcRequest.getRequestId();
         try {
             Method method = ServerBeanMapping.getMethod(ifaceName, methodName, argTypeNames);
-            Optional.ofNullable(method).orElseThrow(() -> new IllegalArgumentException(String.format(
-                    "Fail to find method of interface [%s] method [%s] parameter types [%s]", ifaceName, methodName, argTypeNames.toString()));
             Object bean = ServerBeanMapping.getBean(ifaceName);
-            Optional.ofNullable(bean).orElseThrow(() -> new IllegalArgumentException(String.format(
-                    "Fail to invoke requestId [%s] interface [%s] method [%s]", rpcRequest.getRequestId(), ifaceName, methodName)));
             Object result = method.invoke(bean, buildArgs(argTypeNames, argJsons));
             return RpcResponse.builder()
                     .requestId(requestId)
@@ -71,7 +67,7 @@ public class RpcTask implements Callable<RpcResponse> {
             return RpcResponse.builder()
                     .requestId(requestId)
                     .exceptionTypeEnum(exceptionTypeEnum)
-                    //TODO
+                    //TODO add stack
                     .exceptionMsg(e.toString())
                     .build();
         }
