@@ -11,7 +11,9 @@ public class JsonSerializer implements RpcSerializer {
     //Gson is thread safe
     private static final Gson gson = new GsonBuilder()
             .serializeNulls()
-            .disableHtmlEscaping().create();
+            .disableHtmlEscaping()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            .create();
 
     @Override
     public byte[] serialize(Object obj) {
