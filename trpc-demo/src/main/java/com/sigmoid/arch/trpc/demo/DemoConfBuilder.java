@@ -14,7 +14,13 @@ public class DemoConfBuilder {
 
     public static RpcDefinition buildServerConf() {
         EnvDefinition envDefinition = new EnvDefinition("ETCD", "99.47.149.25:9092");
-        ServerDefinition serverDefinition = new ServerDefinition("local", "demo-service", Sets.newHashSet(), 10, 10, 9091, "tcp", "json");
+        ServerDefinition serverDefinition = new ServerDefinition("local",
+                "demo-service",
+                Sets.newHashSet(),
+                10, 10, 9091,
+                "tcp",
+                "json",
+                1000);
         RpcDefinition rpcDefinition = new RpcDefinition(envDefinition, serverDefinition, Lists.newArrayList());
         return rpcDefinition;
     }

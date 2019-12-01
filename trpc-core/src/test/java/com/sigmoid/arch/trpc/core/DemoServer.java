@@ -15,7 +15,13 @@ import java.net.UnknownHostException;
 public class DemoServer {
 
     private static RpcDefinition buildRpcDefinition() {
-        ServerDefinition serverDefinition = new ServerDefinition("local", "demo-service", Sets.newHashSet(), 10, 10, 9090, "tcp", "json");
+        ServerDefinition serverDefinition = new ServerDefinition("local",
+                "demo-service",
+                Sets.newHashSet(),
+                10, 10, 9090,
+                "tcp",
+                "json",
+                1000);
         EnvDefinition envDefinition = new EnvDefinition("etcd", "127.0.0.1:9300");
         return new RpcDefinition(envDefinition, serverDefinition, Lists.newArrayList());
     }

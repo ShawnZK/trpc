@@ -34,7 +34,8 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
             return;
         }
         log.debug("Channel [{}] read request [{}]", channelId, requestId);
-        Optional.ofNullable(getById(requestId)).ifPresent((rpcRequest) -> rpcRequest.updateOnReply(rpcResponse));
+        Optional.ofNullable(getById(requestId))
+                .ifPresent((rpcRequest) -> rpcRequest.updateOnReply(rpcResponse));
     }
 
     @Override

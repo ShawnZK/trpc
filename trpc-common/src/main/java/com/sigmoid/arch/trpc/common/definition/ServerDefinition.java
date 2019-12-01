@@ -11,30 +11,25 @@ import java.util.Set;
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class ServerDefinition {
 
-    @Getter
     private String group;
 
-    @Getter
     private String serviceName;
 
-    @Getter
     private Set<String> exposeIfaceNames;
 
-    @Getter
     private int threadPoolSize;
 
-    @Getter
     private int threadQueueSize;
 
-    @Getter
     private int port;
 
-    @Getter
     private String transport;
 
-    @Getter
     private String codec;
+
+    private int timeoutInMillis;
 
 }

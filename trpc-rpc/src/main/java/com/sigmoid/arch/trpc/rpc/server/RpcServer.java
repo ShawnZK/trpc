@@ -52,6 +52,8 @@ public class RpcServer {
 
     private String codec;
 
+    private int timeoutInMillis;
+
     private void initOptions() {
         //TODO
     }

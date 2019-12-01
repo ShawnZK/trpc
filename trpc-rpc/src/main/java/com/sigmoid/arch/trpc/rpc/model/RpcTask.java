@@ -1,12 +1,13 @@
 package com.sigmoid.arch.trpc.rpc.model;
 
 import com.sigmoid.arch.trpc.common.enums.ExceptionTypeEnum;
-import com.sigmoid.arch.trpc.common.exception.TRpcSystemException;
 import com.sigmoid.arch.trpc.common.exception.TRpcServiceException;
+import com.sigmoid.arch.trpc.common.exception.TRpcSystemException;
 import com.sigmoid.arch.trpc.rpc.serializer.JsonSerializer;
 import com.sigmoid.arch.trpc.rpc.server.ServerBeanMapping;
 import com.sigmoid.arch.trpc.rpc.utils.ReflectUtil;
 import io.netty.channel.Channel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.lang.reflect.Method;
@@ -16,17 +17,13 @@ import java.util.concurrent.Callable;
 /**
  * Created by ShawnZk on 2019/3/27.
  */
+@AllArgsConstructor
 public class RpcTask implements Callable<RpcResponse> {
 
     @Getter
     private Channel channel;
 
     private RpcRequest rpcRequest;
-
-    public RpcTask(Channel channel, RpcRequest rpcRequest) {
-        this.channel = channel;
-        this.rpcRequest = rpcRequest;
-    }
 
     private Object[] buildArgs(String[] argTypeNames, String[] argJsons) {
         if (argJsons.length != argTypeNames.length) {
@@ -40,7 +37,7 @@ public class RpcTask implements Callable<RpcResponse> {
     }
 
     @Override
-    public RpcResponse call() throws Exception {
+    public RpcResponse call() {
 
         String ifaceName = rpcRequest.getIfaceName();
         String methodName = rpcRequest.getMethodName();
@@ -78,7 +75,7 @@ public class RpcTask implements Callable<RpcResponse> {
     }
 
     public String getRequestId() {
-        return Optional.ofNullable(rpcRequest).orElseGet(() -> RpcRequest.EMPTY_REQUEST).getRequestId();
+        return Optional.ofNullable(rpcRequest).orElse(RpcRequest.EMPTY_REQUEST).getRequestId();
     }
 
 }

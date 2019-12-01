@@ -1,9 +1,9 @@
 package com.sigmoid.arch.trpc.rpc.server;
 
-import com.sigmoid.arch.trpc.rpc.model.RpcResponse;
-import com.sigmoid.arch.trpc.rpc.model.RpcTask;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.*;
+import com.sigmoid.arch.trpc.rpc.model.RpcResponse;
+import com.sigmoid.arch.trpc.rpc.model.RpcTask;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,6 +35,7 @@ public class RpcServerInvoker {
         String requestId = rpcTask.getRequestId();
         Channel channel = rpcTask.getChannel();
         ListenableFuture<RpcResponse> listenableFuture = listeningExecutorService.submit(rpcTask);
+        //TODO add call for withTimeout()
         Futures.addCallback(listenableFuture, new FutureCallback<RpcResponse>() {
             @Override
             public void onSuccess(RpcResponse result) {
@@ -46,6 +47,7 @@ public class RpcServerInvoker {
 
             @Override
             public void onFailure(Throwable t) {
+                //TODO shall we come here if timeout?
                 log.error("Fail on request handle [{}]", requestId);
             }
         }, listeningExecutorService);
