@@ -14,7 +14,6 @@ import java.util.Optional;
 import java.util.concurrent.Callable;
 
 /**
- *
  * Created by ShawnZk on 2019/3/27.
  */
 public class RpcTask implements Callable<RpcResponse> {
@@ -64,11 +63,15 @@ public class RpcTask implements Callable<RpcResponse> {
                 exceptionTypeEnum = ExceptionTypeEnum.SERVICE_EXCEPTION;
             }
             StackTraceElement[] eStackTrace = e.getStackTrace();
+            String[] exceptionStacks = new String[eStackTrace.length];
+            for (int i = 0; i < eStackTrace.length; i++) {
+                exceptionStacks[i] = eStackTrace[i].toString();
+            }
             return RpcResponse.builder()
                     .requestId(requestId)
                     .exceptionTypeEnum(exceptionTypeEnum)
-                    //TODO add stack
                     .exceptionMsg(e.toString())
+                    .exceptionStacks(exceptionStacks)
                     .build();
         }
 
