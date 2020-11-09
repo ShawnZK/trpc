@@ -21,14 +21,13 @@ public class ServerBeanMapping {
     private static ConcurrentMap<String, Object> serverBeans = Maps.newConcurrentMap();
 
     public static void add(ServerBean serverBean) {
-        Class<?> clazz = serverBean.getBeanClazz();
-        String ifaceName = clazz.getName();
-        for (Method method : clazz.getDeclaredMethods()) {
-            String key = genServerMethodMappingKey(ifaceName, method.getName(), method.getParameterTypes());
+        String clazzName = serverBean.getClazzName();
+        for (Method method : serverBean.getBean().getClass().getDeclaredMethods()) {
+            String key = genServerMethodMappingKey(clazzName, method.getName(), method.getParameterTypes());
             serverMethods.putIfAbsent(key, method);
         }
         //TODO only support one implement for one interface
-        serverBeans.putIfAbsent(genServerBeanMappingKey(ifaceName), serverBean.getBean());
+        serverBeans.putIfAbsent(genServerBeanMappingKey(clazzName), serverBean.getBean());
     }
 
     public static Method getMethod(String clazzName, String methodName, String[] argTypeNames) {

@@ -10,7 +10,7 @@ import lombok.Getter;
 public class ServerBean {
 
     @Getter
-    private Class<?> beanClazz;
+    private String clazzName;
 
     @Getter
     private Object bean;
