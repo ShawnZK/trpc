@@ -1,6 +1,7 @@
 package com.sigmoid.arch.trpc.rpc.server;
 
 
+import com.google.common.net.HostAndPort;
 import com.sigmoid.arch.trpc.common.definition.ServerDefinition;
 import com.sigmoid.arch.trpc.common.thread.TRpcThreadPool;
 import com.sigmoid.arch.trpc.registry.RegistryHandler;
@@ -9,8 +10,6 @@ import com.sigmoid.arch.trpc.registry.event.ServerRegistryEvent;
 import com.sigmoid.arch.trpc.rpc.handler.tcp.TcpServerHandler;
 import com.sigmoid.arch.trpc.rpc.selector.SerializerSelector;
 import com.sigmoid.arch.trpc.rpc.selector.TransportSelector;
-import com.sigmoid.arch.trpc.rpc.utils.PlatformUtil;
-import com.google.common.net.HostAndPort;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -23,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import static org.apache.commons.lang3.SystemUtils.IS_OS_LINUX;
 
 
 /**
@@ -72,11 +73,11 @@ public class RpcServer {
 
         serverBootstrap = new ServerBootstrap();
 
-        EventLoopGroup bossGroup = PlatformUtil.isOnLinux() ? new EpollEventLoopGroup(1) : new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = PlatformUtil.isOnLinux() ? new EpollEventLoopGroup() : new NioEventLoopGroup();
+        EventLoopGroup bossGroup = IS_OS_LINUX ? new EpollEventLoopGroup(1) : new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = IS_OS_LINUX ? new EpollEventLoopGroup() : new NioEventLoopGroup();
 
         serverBootstrap.group(bossGroup, workerGroup)
-                .channel(PlatformUtil.isOnLinux() ? EpollServerSocketChannel.class : NioServerSocketChannel.class);
+                .channel(IS_OS_LINUX ? EpollServerSocketChannel.class : NioServerSocketChannel.class);
         initThreadPool();
         initOptions();
         initHandlers();

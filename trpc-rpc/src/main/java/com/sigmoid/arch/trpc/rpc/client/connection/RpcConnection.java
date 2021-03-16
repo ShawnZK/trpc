@@ -7,7 +7,6 @@ import com.sigmoid.arch.trpc.rpc.model.RpcRequest;
 import com.sigmoid.arch.trpc.rpc.model.RpcRequestsHolder;
 import com.sigmoid.arch.trpc.rpc.selector.SerializerSelector;
 import com.sigmoid.arch.trpc.rpc.selector.TransportSelector;
-import com.sigmoid.arch.trpc.rpc.utils.PlatformUtil;
 import com.google.common.net.HostAndPort;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -22,6 +21,8 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Closeable;
+
+import static org.apache.commons.lang3.SystemUtils.IS_OS_LINUX;
 
 /**
  * Created by ShawnZk on 2019/3/29.
@@ -54,12 +55,12 @@ public class RpcConnection implements Closeable {
 
         this.parentRpcClient = parentRpcClient;
         this.hostAndPort = hostAndPort;
-        this.eventLoopGroup = PlatformUtil.isOnLinux() ? new EpollEventLoopGroup(1) : new NioEventLoopGroup(1);
+        this.eventLoopGroup = IS_OS_LINUX ? new EpollEventLoopGroup(1) : new NioEventLoopGroup(1);
         this.bootstrap = new Bootstrap();
 
         try {
             bootstrap.group(eventLoopGroup)
-                    .channel(PlatformUtil.isOnLinux() ? EpollSocketChannel.class : NioSocketChannel.class);
+                    .channel(IS_OS_LINUX ? EpollSocketChannel.class : NioSocketChannel.class);
             initHandlers(clientDefinition.getTransport(), clientDefinition.getCodes());
             initOptions();
             bootstrap.remoteAddress(hostAndPort.getHost(), hostAndPort.getPort());
