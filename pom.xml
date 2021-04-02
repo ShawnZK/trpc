@@ -28,6 +28,7 @@
         <sl4j.version>1.7.26</sl4j.version>
         <log4j2.version>2.11.2</log4j2.version>
         <disruptor.version>3.4.2</disruptor.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
     </properties>
 
     <dependencies>
